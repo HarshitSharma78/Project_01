@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FROM.</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #6699cc;
+      }
+      .container h1 {
+        color: white;
+        font-family: sans-serif;
+        margin: 20px;
+      }
+      .registration-from {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        font-family: sans-serif;
+        background-color: #154a68;
+        padding: 20px;
+      }
+      .registration-from input,
+      .registration-from select,
+      .registration-from textarea{
+        border: none;
+        padding: 5px;
+        margin-top: 10px;
+        font-family: sans-serif;
+      }
+      .registration-from .submit {
+        width: 100%;
+        padding: 8px 0;
+        font-size: 20px;
+        color: rgb(44, 44, 44);
+        background-color: #ffffff;
+        border-radius: 5px;
+      }
+      .registration-from .submit:hover{
+        box-sizing: 3px 3px 6px rgb(255,214,176);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HTML registration form with varification</h1>
+      <form
+        name="registration"
+        class="registration-from"
+        onsubmit="return formValidation()"
+      >
+        <table>
+          <tr>
+            <td><label for="name">Name:</label></td>
+            <td>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="First Name"
+              />
+            </td>
+            <tr>
+              <td><label for="name">Name:</label></td>
+              <td>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Last Name"
+                />
+              </td>
+              <tr>
+                <td><label for="name">Name:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="FatherName"
+                  />
+                </td>
+                <tr>
+                  <td><label for="birthday">birthday:</label></td>
+                  <td>
+                    <input
+                      type="date"
+                      name="birthday"
+                      id="birthday"
+                    />
+                  </td>
+            <tr>
+              <td><label for="email">Email</label></td>
+              <td><input type="text" name="email" id="name" placeholder="your Email"></td>
+            </tr>
+            <tr>
+              <td><label for="password">password</label></td>
+              <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+              <td><label for="phoneNumber">phoneNumber</label></td>
+              <td><input type="number" name="phoneNumber" id="phoneNumber"></td>
+            </tr>
+            <tr>
+              <td><label for="gender">gender</label></td>
+              <td>
+                Male:<input type="radio" name="gender" value="male">
+                Female:<input type="radio" name="gender" value="female">
+                Other:<input type="radio" name="gender" value="other">
+              </td>
+            </tr>
+            <tr>
+              <td><label for="language">language</label></td>
+              <td>
+                <select name="language" id="language">
+                  <option value="">Select language</option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Arabic">Arabic</option>
+                  <option value="Russian">Russian</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="Course">Course</label></td>
+              <td>
+                <select name="Course" id="Course">
+                  <option value="">Select List for Course</option>
+                  <option value="English">JavaScript</option>
+                  <option value="Spanish">Designing</option>
+                  <option value="Hindi">Nodejs</option>
+                  <option value="Arabic">Photoshop</option>
+                  <option value="Russian">Java</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="about">about</label></td>
+              <td><textarea name="about" id="about" placeholder="Write about yourself..."></textarea></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit" class="submit" value="Register"</td>
+            </tr>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+    // Select all input elements for varification
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const phoneNumber = document.getElementById("phoneNumber");
+const gender = document.registration;
+const language = document.getElementById("language");
+const zipcode = document.getElementById("zipcode");
+
+// ye function form varification ke liya use hota ha
+function formValidation() {
+  // ye name wala hai
+  if (name.value.length < 2 || name.value.length > 20) {
+    alert("Name length should be more than 2 and less than 21");
+    name.focus();
+    return false;
+  }
+  // ye email wala hai
+  if (email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+    alert("Please enter a valid email!");
+    email.focus();
+    return false;
+  }
+  //  ye password wala ha
+  if (!password.value.match(/^.{5,15}$/)) {
+    alert("Password length must be between 5-15 characters!");
+    password.focus();
+    return false;
+  }
+  // ye phone Number wala hai
+  if (!phoneNumber.value.match(/^[1-9][0-9]{9}$/)) {
+    alert(
+      "Phone number must be 10 characters long number and first digit can't be 0!"
+    );
+    phoneNumber.focus();
+    return false;
+  }
+  //  ye gender wala hai
+  if (gender.gender.value === "") {
+    alert("Please select your gender!");
+    return false;
+  }
+  // ye language ka hai
+  if (language.value === "") {
+    alert("Please select your language!");
+    return false;
+  }
+  // ye zip code hai
+  if (!zipcode.value.match(/^[0-9]{6}$/)) {
+    alert("Zip code must be 6 characters long number!");
+    zipcode.focus();
+    return false;
+  }
+  return true;
+}
+    </script>
+  </body>
+</html>
